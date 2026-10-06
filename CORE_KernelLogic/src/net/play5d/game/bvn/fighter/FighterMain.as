@@ -582,6 +582,9 @@ public class FighterMain extends BaseGameSprite {
      */
     public function sayIntro():void {
         introSaid = true;
+        if (!_fighterCtrl || !_fighterCtrl.getMcCtrl()) {
+            return;
+        }
         _fighterCtrl.getMcCtrl().sayIntro();
     }
 
@@ -589,6 +592,9 @@ public class FighterMain extends BaseGameSprite {
      * 胜利动作
      */
     public function win():void {
+        if (!_fighterCtrl || !_fighterCtrl.getMcCtrl()) {
+            return;
+        }
         _fighterCtrl.getMcCtrl().doWin();
     }
 
@@ -598,6 +604,9 @@ public class FighterMain extends BaseGameSprite {
      * @param isIgnoreAlive 是否忽略存活条件
      */
     public function idle(isIgnoreAlive:Boolean = false):void {
+        if (!_fighterCtrl || !_fighterCtrl.getMcCtrl()) {
+            return;
+        }
         _fighterCtrl.getMcCtrl().idle(null, isIgnoreAlive);
     }
 
@@ -605,6 +614,9 @@ public class FighterMain extends BaseGameSprite {
      * 失败动作
      */
     public function lose():void {
+        if (!_fighterCtrl || !_fighterCtrl.getMcCtrl()) {
+            return;
+        }
         _fighterCtrl.getMcCtrl().doLose();
     }
 

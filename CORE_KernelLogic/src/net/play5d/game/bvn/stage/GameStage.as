@@ -280,7 +280,9 @@ public class GameStage extends Sprite implements IStage {
             P1.x      = _map.p1pos.x;
             P1.y      = _map.p1pos.y;
             P1.direct = 1;
-            P1.idle();
+            if (P1.getMC()) {
+                P1.idle();
+            }
             P1.updatePosition();
             _cameraFocus.push(P1.getDisplay());
         }
@@ -290,7 +292,9 @@ public class GameStage extends Sprite implements IStage {
             P2.x      = _map.p2pos.x;
             P2.y      = _map.p2pos.y;
             P2.direct = -1;
-            P2.idle();
+            if (P2.getMC()) {
+                P2.idle();
+            }
             P2.updatePosition();
             _cameraFocus.push(P2.getDisplay());
         }

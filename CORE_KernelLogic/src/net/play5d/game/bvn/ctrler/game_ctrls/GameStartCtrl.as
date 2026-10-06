@@ -115,8 +115,12 @@ public class GameStartCtrl {
                 _step      = 6;
                 _state.gameUI.getUI().fadIn(true);
 
-                _p1.idle();
-                _p2.idle();
+                if (_p1 && _p1.getMC()) {
+                    _p1.idle();
+                }
+                if (_p2 && _p2.getMC()) {
+                    _p2.idle();
+                }
 
                 _holdFrame = 0.5 * GameConfig.FPS_GAME;
             }

@@ -163,6 +163,10 @@ public class FighterMcCtrler {
      * @param isIgnoreAlive 是否忽略存活条件
      */
     public function idle(frame:String = null, isIgnoreAlive:Boolean = false):void {
+        if (!_rt || !_rt.fighter || !_rt.mc) {
+            return;
+        }
+
         frame ||= FighterSpecialFrame.IDLE;
 
         if (!_rt.fighter.isAlive && !isIgnoreAlive) {
@@ -210,7 +214,9 @@ public class FighterMcCtrler {
                 _rt.action.airHitTimes = _rt.fighter.airHitTimes;
                 setAllAct();
             }
-            _rt.mc.goFrame(frame, isPlay);
+            if (_rt.mc) {
+                _rt.mc.goFrame(frame, isPlay);
+            }
         }
 
         FighterEventDispatcher.dispatchEvent(_rt.fighter, FighterEvent.IDLE);
@@ -219,11 +225,17 @@ public class FighterMcCtrler {
 
     //循环播放  parent.$mc_ctrler.loop("走");
     public function loop(frame:String):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         _rt.mc.goFrame(frame);
     }
 
     //停止播放   parent.$mc_ctrler.stop();
     public function stop():void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         _rt.mc.stopRenderMainAnimate();
     }
 
@@ -250,6 +262,10 @@ public class FighterMcCtrler {
 
     //设定所有的动作
     public function setAllAct():void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         setMove();
         setDefense();
         setJump();
@@ -278,6 +294,10 @@ public class FighterMcCtrler {
 
     //设定所有空中的动作
     public function setAirAllAct():void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         setDash();
         setAttackAIR();
         setSkillAIR();
@@ -310,6 +330,10 @@ public class FighterMcCtrler {
 
     //设定跳
     public function setJump(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.JUMP;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -320,6 +344,10 @@ public class FighterMcCtrler {
 
     //设定跳2
     public function setJumpQuick(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.JUMP;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -330,6 +358,10 @@ public class FighterMcCtrler {
 
     //设定从空中的板中跳下
     public function setJumpDown(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.JUMP_DOWN;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -340,6 +372,10 @@ public class FighterMcCtrler {
 
     //设定冲刺
     public function setDash(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.DASH;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -350,6 +386,10 @@ public class FighterMcCtrler {
 
     //设定普通攻击J  parent.$mc_ctrler.setAttack("砍1");
     public function setAttack(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.ATTACK;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -360,6 +400,10 @@ public class FighterMcCtrler {
 
     //设定技能攻击S+J
     public function setSkill1(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.SKILL_1;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -370,6 +414,10 @@ public class FighterMcCtrler {
 
     //设定技能攻击W+J
     public function setSkill2(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.SKILL_2;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -380,6 +428,10 @@ public class FighterMcCtrler {
 
     //设定技能攻击U  parent.$mc_ctrler.setZhao1();
     public function setZhao1(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.ZHAO_1;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -390,6 +442,10 @@ public class FighterMcCtrler {
 
     //设定技能攻击S+U  parent.$mc_ctrler.setZhao2();
     public function setZhao2(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.ZHAO_2;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -400,6 +456,10 @@ public class FighterMcCtrler {
 
     //设定技能攻击W+U  parent.$mc_ctrler.setZhao3();
     public function setZhao3(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.ZHAO_3;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -409,6 +469,10 @@ public class FighterMcCtrler {
     }
 
     public function setCatch1(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.CATCH_1;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -418,6 +482,10 @@ public class FighterMcCtrler {
     }
 
     public function setCatch2(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.CATCH_2;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -428,6 +496,10 @@ public class FighterMcCtrler {
 
     //设定必杀I  parent.$mc_ctrler.setBisha();
     public function setBisha(action:String = null, qi:int = 100):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.BISHA;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -439,6 +511,10 @@ public class FighterMcCtrler {
 
     //设定必杀W+I
     public function setBishaUP(action:String = null, qi:int = 100):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.BISHA_UP;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -450,6 +526,10 @@ public class FighterMcCtrler {
 
     //设定必杀S+I
     public function setBishaSUPER(action:String = null, qi:int = 300):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.BISHA_SUPER;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -461,6 +541,10 @@ public class FighterMcCtrler {
 
     //设定空中普通攻击J
     public function setAttackAIR(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.ATTACK_AIR;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -471,6 +555,10 @@ public class FighterMcCtrler {
 
     //设定空中技能U
     public function setSkillAIR(action:String = null):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.SKILL_AIR;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -481,6 +569,10 @@ public class FighterMcCtrler {
 
     //设定空中必杀I
     public function setBishaAIR(action:String = null, qi:int = 100):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.BISHA_AIR;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -492,6 +584,10 @@ public class FighterMcCtrler {
 
     //设定落地的动作,breakAct:接触到地面时是否中断当前动作
     public function setTouchFloor(action:String = null, breakAct:Boolean = true):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         action ||= FighterSpecialFrame.JUMP_TOUCH_FLOOR;
 
         if (!_rt.mc.checkFrame(action)) {
@@ -504,6 +600,10 @@ public class FighterMcCtrler {
 
     //设定万解
     public function setWankai():void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
+
         if (_rt.mc.checkFrame(FighterSpecialFrame.BANKAI)) {
             _rt.action.waiKai = FighterSpecialFrame.BANKAI;
         }
@@ -614,14 +714,23 @@ public class FighterMcCtrler {
     }
 
     public function gotoAndPlay(frame:String):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         _rt.mc.goFrame(frame, true);
     }
 
     public function gotoAndStop(frame:String):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         _rt.mc.goFrame(frame, false);
     }
 
     public function hurtFly(x:Number, y:Number):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         _rt.mc.playHurtFly(x * _rt.fighter.direct, y, false);
         _rt.action.isHurtFlying = true;
         _rt.fighter.actionState = FighterActionState.HURT_FLYING;
@@ -673,6 +782,9 @@ public class FighterMcCtrler {
     public function justHitToPlay(hitid:String, frame:String, noIdle:Boolean = false,
                                   inCludeDefense:Boolean                     = false
     ):void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         if (_rt.fighter.getCtrler().justHit(hitid, inCludeDefense)) {
             _rt.mc.goFrame(frame);
         }
@@ -709,6 +821,9 @@ public class FighterMcCtrler {
     //-----------------------------------------------------------------------------------------------
 
     public function render():void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
 
         if (_actionCtrl.ghostStepIng) {
             return;
@@ -829,6 +944,9 @@ public class FighterMcCtrler {
      * 开场
      */
     public function sayIntro():void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         _rt.fighter.actionState = FighterActionState.KAI_CHANG;
         _rt.mc.goFrame(FighterSpecialFrame.SAY_INTRO);
     }
@@ -837,6 +955,9 @@ public class FighterMcCtrler {
      * 胜利
      */
     public function doWin():void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         _rt.fighter.actionState = FighterActionState.WIN;
         _rt.mc.goFrame(FighterSpecialFrame.WIN);
     }
@@ -845,6 +966,9 @@ public class FighterMcCtrler {
      * 失败
      */
     public function doLose():void {
+        if (!_rt || !_rt.mc) {
+            return;
+        }
         _rt.fighter.actionState = FighterActionState.LOSE;
         _rt.mc.goFrame(FighterSpecialFrame.LOSE);
     }
@@ -863,7 +987,7 @@ public class FighterMcCtrler {
             highlight:Boolean                                                                 = false
     ):void {
 
-        if (action == null) {
+        if (action == null || !_rt || !_rt.mc) {
             return;
         }
 

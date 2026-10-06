@@ -252,6 +252,9 @@ public class FighterMcActionCtrl {
         var aimY:Number;
 
         if (_moveTargetParam.followMcName) {
+            if (!_rt.mc) {
+                return;
+            }
             var mc:DisplayObject = _rt.mc.getChildByName(_moveTargetParam.followMcName);
             if (!mc) {
                 return;
